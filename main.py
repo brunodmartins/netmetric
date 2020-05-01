@@ -19,7 +19,8 @@ def read_data():
 
 def printer(interface):
     text = 'Interface:{}\tUpload:{}\tDownload:{}\t' 
-    print(text.format(interface.name, format_bytes(interface.tx_bytes), format_bytes(interface.rx_bytes)))
+    formatted = text.format(interface.name, format_bytes(interface.tx_bytes), format_bytes(interface.rx_bytes))
+    print(formatted)
 
 def format_bytes(value):
     final_value = 0
@@ -44,6 +45,6 @@ while(True):
     interfaces = read_data()
     time.sleep(1)
     new_interfaces = read_data() 
+    os.system('clear')
     for key in new_interfaces.keys():
         printer(check_diff(interfaces[key], new_interfaces[key]))
-
